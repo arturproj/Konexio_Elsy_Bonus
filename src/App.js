@@ -57,7 +57,7 @@ class App extends React.Component{
         if ( val < 0 ){
             val = val*(-1)
         }
-        let rapp = 60/val;
+        let rapp = val/60;
         let res1 = 58  + (((58 - 255) / 60) * rapp);
         let res2 = 133 + (((232 - 133) / 60) * rapp);
         let res3 = 255 - (((255 - 58) / 60) * rapp);
@@ -144,7 +144,7 @@ class App extends React.Component{
 
     render(){
         return(
-            <div className="row mx-0">
+            <div className="row mx-0 box">
                 <Water
                     water={this.state.water.toFixed(2)}
                 />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Icon = ({ name='DEMO', stylesheetClass=[], gradient="rgb(0, 0, 0)" }) => {
+const Icon = ({ name='DEMO-ICON', stylesheetClass=[], gradient="rgb(0, 0, 0)" }) => {
         const className = ["material-icons"];     
               
         if (  stylesheetClass && stylesheetClass.length > 0 ){
@@ -9,8 +9,8 @@ const Icon = ({ name='DEMO', stylesheetClass=[], gradient="rgb(0, 0, 0)" }) => {
                 console.warn("BUTTON:\nattribute 'stylesheetClass' is empty...");
         }
 
-        if ( name !== 'DEMO' ||  name.length <= 1 ){
-                console.error("BUTTON:\nattribute 'name' is empty ...\nauto injection default 'CLICK ME' ");
+        if ( name === 'DEMO-ICON' ||  name.length < 1 ){
+                console.error("ICON:\nattribute 'name' is empty ...\nauto injection default 'DEMO ICON' ");
         }
 
         return(

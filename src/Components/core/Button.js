@@ -9,8 +9,8 @@ const Button = ({ name='DEMO', stylesheetClass=[], action={} }) => {
                 console.warn("BUTTON:\nattribute 'stylesheetClass' is empty...");
         }
 
-        if ( name !== 'DEMO' ||  name.length <= 1 ){
-                console.error("BUTTON:\nattribute 'name' is empty ...\nauto injection default 'CLICK ME' ");
+        if ( name === 'DEMO' ||  name.length < 1 ){
+                console.error("BUTTON:\nattribute 'name' is empty ...\nauto injection default 'DEMO' ");
         }
 
         return(

@@ -8,7 +8,7 @@ import Slider from './core/Slider';
 
 const Person = ({ min, max, steps, onChange, toggle, btnInc, btnDec }) => {
     return (
-        <div className="box col-md-3 col-6 text-center" style={{display : "grid"}}>
+        <div className="box col-md-3 col-6 text-center align-self-center" style={{display : "grid"}}>
             <Toggle name={toggle.gender} onClickAction={toggle.action} value={toggle.value} />
             <Icon name="directions_walk" stylesheetClass={[toggle.gender]} gradient="" />
             <p>{steps} STEPS</p>
