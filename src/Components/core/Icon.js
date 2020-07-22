@@ -1,29 +1,23 @@
 import React from 'react';
 
-class Icon extends React.Component{
-
-    render(){
-        
-        const className = ["material-icons"];               
-        const remoteClass = this.props.stylesheetClass;
-        if ( remoteClass && remoteClass.length > 0 ){
-                className.push(...remoteClass)
+const Icon = ({ name='DEMO', stylesheetClass=[], gradient="rgb(0, 0, 0)" }) => {
+        const className = ["material-icons"];     
+              
+        if (  stylesheetClass && stylesheetClass.length > 0 ){
+                className.push(...stylesheetClass)
         }else{
-                console.warn("ICON:\nattribute 'stylesheetClass' is empty...");
+                console.warn("BUTTON:\nattribute 'stylesheetClass' is empty...");
         }
-//
-        const icon_name = this.props.name;
-        if ( !icon_name || icon_name === ''){
-                console.error("ICON:\nattribute 'name' is empty ...\nauto injection default 'CLICK ME' ");
-        }
-//                   
-        return(
-            <span className={className.join(" ")} style={{color : this.props.gradient}}>
-                {icon_name}
-            </span>
-        );
-    }
 
-}
+        if ( name !== 'DEMO' ||  name.length <= 1 ){
+                console.error("BUTTON:\nattribute 'name' is empty ...\nauto injection default 'CLICK ME' ");
+        }
+
+        return(
+                <span className={className.join(" ")} style={{color : gradient}}>
+                        {name}
+                 </span>       
+        );
+};
 
 export default Icon;

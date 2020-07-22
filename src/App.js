@@ -5,6 +5,15 @@ import Water from './Components/Water';
 import HeartRate from './Components/HeartRate';
 import Temperature from './Components/Temperature';
 
+const MIN_TEMPERATURE = -20;
+const MAX_TEMPERATURE = 40;
+
+const MIN_HEART = 80;
+const MAX_HEART = 180;
+
+const MIN_STEPS = 0;
+const MAX_STEPS = 50000;
+
 class App extends React.Component{
 
 
@@ -38,21 +47,13 @@ class App extends React.Component{
 
     onStepsChange(val){
         this.onCalculateWater(val,"steps");
-        this.setState({
-            steps: val,
-        });
     }
     onHeartChange(val){
         this.onCalculateWater(val,"heart");
-        this.setState({
-            heart: val,
-        });
     }
     onTemperatureChange(val){
         this.onCalculateWater(val,"temperature");
-        this.setState({
-            temperature: val,
-        });
+
         if ( val < 0 ){
             val = val*(-1)
         }
@@ -81,10 +82,12 @@ class App extends React.Component{
                 let temp = (val - 10000) * 0.00002;       
                 this.setState({
                     waterStep: temp,
+                    steps: val
                 });       
             }else{
                 this.setState({
                     waterStep: 0,
+                    steps: val
                 }); 
             }
         }
@@ -94,10 +97,12 @@ class App extends React.Component{
                 let temp = (val - 120) * 0.0008;  
                 this.setState({
                     waterHeart: temp,
+                    heart: val,
                 });  
             }else{
                 this.setState({
                     waterHeart: 0,
+                    heart: val,
                 });  
             }  
         }
@@ -107,18 +112,18 @@ class App extends React.Component{
                 let temp = (val - 20) * 0.02;  
                 this.setState({
                     waterTemperature: temp,
+                    temperature: val,
                 });   
             }else{
                 this.setState({
                     waterTemperature: 0,
+                    temperature: val,
                 });  
             }
         }
            // console.table(1.5,"|", this.state.waterHeart,"|", this.state.waterStep,"|", this.state.waterTemperature )
-        var tot_water = this.state.waterHeart + this.state.waterStep + this.state.waterTemperature + 1.5;
-
         this.setState({
-            water : tot_water
+            water : this.state.waterHeart + this.state.waterStep + this.state.waterTemperature + 1.5
         });
     }
 
@@ -128,32 +133,16 @@ class App extends React.Component{
             gender:  ( this.state.toggle !== true ? 'male' : 'female' )
         })
     }
-    incChange(){        
-        this.setState({
-            steps: this.state.steps + 1000,
-        })
-        this.onCalculateWater(this.state.steps,"steps");
+    incChange(){
+        this.onCalculateWater(this.state.steps + 1000,"steps");
     }
-    decChange(){
+    decChange(){        
         if ( this.state.steps > 1000 ) {
-            this.setState({
-                steps: this.state.steps - 1000,
-            })
-        }
-        this.onCalculateWater(this.state.steps,"steps");
+            this.onCalculateWater(this.state.steps - 1000,"steps");
+        }        
     }
 
     render(){
-
-        const MIN_TEMPERATURE = -20;
-        const MAX_TEMPERATURE = 40;
-
-        const MIN_HEART = 80;
-        const MAX_HEART = 180;
-
-        const MIN_STEPS = 0;
-        const MAX_STEPS = 50000;
-
         return(
             <div className="row mx-0">
                 <Water

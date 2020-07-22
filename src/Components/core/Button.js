@@ -1,29 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Button extends Component{
-
-    render(){  
-        
-        const className = ["btn"];               
-        const remoteClass = this.props.stylesheetClass;
-        if (  remoteClass && remoteClass.length > 0 ){
-                remoteClass.forEach(this_class => {
-                        className.push(this_class);
-                });
+const Button = ({ name='DEMO', stylesheetClass=[], action={} }) => {
+        const className = ["btn"];     
+              
+        if (  stylesheetClass && stylesheetClass.length > 0 ){
+                className.push(...stylesheetClass)
         }else{
                 console.warn("BUTTON:\nattribute 'stylesheetClass' is empty...");
         }
-//
-        const button_name = this.props.name;
-        if ( !button_name || button_name === ''){
+
+        if ( name !== 'DEMO' ||  name.length <= 1 ){
                 console.error("BUTTON:\nattribute 'name' is empty ...\nauto injection default 'CLICK ME' ");
         }
-//                   
-        return(
-            <button type="button" className={className.join(" ")} onClick={this.props.action} >{button_name}</button>       
-        );
-    }
 
-}
+        return(
+                <button type="button" className={className.join(" ")} onClick={action} >{name}</button>       
+        );
+};
 
 export default Button;
