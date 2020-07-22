@@ -1,0 +1,25 @@
+.box{
+    height: 190px;
+    padding: 10px;
+}
+
+.material-icons{
+    font-size: 100px;
+}.male{
+    color: blue;
+}.female{
+    color: pink;
+}.water{ 
+    color: #3a85ff;
+}.heart_rate{
+    color: #ff0000;
+}.sunny{
+    color: #ffff00;
+}
+
+.d{
+    color: rgb(58, 133, 255);
+}
+.d{
+    color: rgb(255, 232, 58) ;
+}
